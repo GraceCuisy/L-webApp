@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <v-damu>
+            <template #top="{a,b}">
+                <span>span from app.template-1;{{a}};{{b}}</span>
+            </template>
+            <template #bottom="{c,d}">
+                <span>span from app.template-2;{{c}};{{d}}</span>
+            </template>
+        </v-damu>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+
+    /*新版本插槽的语法;在slot这个组件的定义上没有任何改变
+    在tempalte模板上新增了一个语法 v-slot:name="{要收集的数据}"*/
+
+    var damu = {
+        template:`
+            <div>
+                <slot :a="a" :b="b" name="top"></slot>
+                <slot :c="c" :d="d" name="bottom"></slot>
+            </div>
+        `,
+        data(){
+            return {
+                a:"data-a",
+                b:"data-b",
+                c:"data-c",
+                d:"data-d"
+            }
+        }
+    }
+
+    var vm = new Vue({
+        el:"#app",
+        components:{
+            "v-damu":damu
+        }
+    })
+</script>
+</html>

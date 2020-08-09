@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <v-damu></v-damu>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    var damu = {
+        template:`
+            <div>
+                <slot> <span>default</span> </slot>
+            </div>
+        `
+    }
+
+    var vm = new Vue({
+        el:"#app",
+        components:{
+            "v-damu":damu
+        }
+    })
+</script>
+</html>

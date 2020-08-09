@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>Title</title>
+    <style type="text/less">
+        .onePx(@bgColor){
+            position: relative;
+            &:after{
+                content: "";
+                display: block;
+                width: 100%;
+                height: 1px;
+                background: @bgColor;
+                position: absolute;
+                bottom: 0px;
+                z-index: 2;
+                @media only screen and (-webkit-device-pixel-ratio: 2){
+                    transform:scaleY(1);
+                }
+                @media only screen and (-webkit-device-pixel-ratio: 3){
+                    transform:scaleY(.66666666);
+                }
+            }
+        }
+
+
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-size: 0px;
+            color: rgba(255,255,255,1);
+        }
+
+        #wrap > header{
+            .onePx(black);
+            width: 100%;
+            height: 212px;
+            background: rgba(7,17,27,0.5);
+            overflow: hidden;
+        }
+        #wrap > header >.head-top{
+            overflow: hidden;
+            margin: 48px 0 0 48px;
+        }
+        #wrap > header >.head-top .logo{
+            width: 128px;
+            height: 128px;
+            margin-right: 32px;
+            float: left;
+        }
+        #wrap > header >.head-top .logo img{
+            width: 100%;
+            height: 100%;
+        }
+
+        #wrap > header >.head-top .meta{
+            float: left;
+        }
+
+        #wrap > header >.head-top .meta .title{
+            margin: 4px 0 16px 0;
+        }
+        #wrap > header >.head-top .meta .title .brand{
+            display: inline-block;
+            width: 60px;
+            height: 36px;
+            background: url("./img/brand@2x.png") no-repeat;
+            background-size: 100% 100%;
+            margin-right: 12px;
+            vertical-align: middle;
+        }
+        #wrap > header >.head-top .meta .title .text{
+            font-size: 32px;
+            line-height: 36px;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        #wrap > header >.head-top .meta .info span{
+            font-size: 24px;
+            line-height: 24px;
+            font-weight: 200;
+        }
+
+        #wrap > header >.head-top .meta .supportInfo{
+            margin: 20px 0 4px 0;
+        }
+        #wrap > header >.head-top .meta .supportInfo .icon{
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: url("./img/decrease_1@2x.png") no-repeat;
+            background-size: 100% 100%;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        #wrap > header >.head-top .meta .supportInfo .support{
+            font-size: 20px;
+            line-height: 24px;
+            font-weight: 200;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <section id="wrap">
+        <header>
+            <section class="head-top">
+                <div class="logo">
+                    <img src="./img/avatar.jpg" alt="">
+                </div>
+                <div class="meta">
+                    <div class="title">
+                        <span class="brand"></span>
+                        <span class="text">一休哥(西部硅谷)</span>
+                    </div>
+                    <div class="info">
+                        <span>蜂鸟专送/38分钟到达</span>
+                    </div>
+                    <div class="supportInfo">
+                        <span class="icon"></span>
+                        <span class="support">在线支付 满28减5,满50送店</span>
+                    </div>
+                </div>
+            </section>
+        </header>
+    </section>
+</body>
+<script src="https://cdn.bootcss.com/less.js/1.7.5/less.min.js"></script>
+<script>
+    /*
+        什么是viewport适配?
+              将所有设备的布局视口通过系统缩放 缩放成设计图的大小
+                优点 : 所量即所得
+                缺点 : 破坏了完美视口
+                原理 : 改变了css像素与物理像素之间的比例!
+     */
+
+
+    (function () {
+        var targetW = 750; // 设计图的宽度
+        //布局视口 = 理想视口 的宽度
+        var layoutW = document.documentElement.clientWidth;
+        var scale = layoutW / targetW;
+        var metaNode = document.querySelector("meta[name=viewport]");
+        metaNode.content ="initial-scale="+scale+",user-scalable=no,maximum-scale="+scale+",minimum-scale="+scale+"";
+    })()
+</script>
+</html>

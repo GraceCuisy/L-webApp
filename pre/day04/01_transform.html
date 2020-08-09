@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #app{
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script>
+     /*
+          css函数  3个参数的时候 设置操作
+                   2个参数的时候 读取操作
+
+            node:哪一个dom节点
+            type:dom节点的哪一个变换
+            val :对应变换的值
+
+
+            css(app,"translateX",100);   text --> translateX(100px)
+            css(app,"translateY",100);   text --> translateX(100px) translateY(100px)
+            css(app,"rotate",45);        text --> translateX(100px) translateY(100px) rotate(45deg)
+
+
+             {
+                  translateX:100,
+                  translateY:100,
+                  rotate:45
+             }
+      */
+    function css(node,type,val){
+        if(arguments.length >= 3){
+            //设置操作
+            var text ="";
+            if(!node.transform){
+                node.transform ={}
+            }
+            node.transform[type] = val;
+
+            for(var item in node.transform){
+                switch (item)  {
+                    case "translateX":
+                    case "translateY":
+                    case "translateZ":
+                        text+= item+"("+node.transform[item]+"px)";
+                        break;
+
+                    case "rotateX":
+                    case "rotateY":
+                    case "rotateZ":
+                    case "rotate":
+                        text+= item+"("+node.transform[item]+"deg)";
+                        break;
+
+                    case "scale":
+                        text+= item+"("+node.transform[item]+")";
+                        break;
+                }
+            }
+
+            node.style.transform = text;
+        }else if(arguments.length === 2){
+            //读取操作
+            var result = node.transform[type];
+
+            if(result === undefined){
+                result = 0;
+                if(type === "scale"){
+                    result = 1;
+                }
+            }
+            return result;
+        }
+    }
+
+
+
+    window.onload=function () {
+        var app = document.querySelector("#app");
+
+        /*
+            app.style.transform = "translateX(100px)";
+            // ..几千行代码..
+            app.style.transform = "translateX(100px) rotate(45deg)";
+        */
+
+
+
+       css(app,"translateX",100);
+       css(app,"translateY",90);
+       css(app,"translateY",190);
+       css(app,"rotate",45);
+       console.log(css(app,"scale"))
+    }
+</script>
+</html>

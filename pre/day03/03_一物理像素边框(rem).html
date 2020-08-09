@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        #app{
+            width: 100%;
+            height: 3rem;
+            background: pink;
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+
+            border-bottom:1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script>
+    (function () {
+
+        //拿到像素比
+        var dpr = window.devicePixelRatio||1;
+        //拿到要缩放的比例
+        var scale = 1/dpr;
+
+
+        //rem适配需要的style标签
+        var styleNode = document.createElement("style");
+        //缩放需要的meta标签
+        var metaNode = document.querySelector("meta[name=viewport]");
+
+        // 将rem的所对应的基值先放大dpr倍
+        var w = document.documentElement.clientWidth/16 * dpr;
+        // 将页面上所有元素统一缩小 dpr倍
+        metaNode.content="width=device-width,initial-scale="+scale+",user-scalable=no,maximum-scale="+scale+",minimum-scale="+scale+"";
+
+
+        styleNode.innerHTML="html{font-size:"+w+"px!important}";
+        document.head.appendChild(styleNode);
+
+    })()
+</script>
+</html>

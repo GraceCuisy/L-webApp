@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 
+        flex项目上的属性:
+                order : order越大元素越往后靠(order可以写负值)
+                align-self: 单独控制一个项目的侧轴上的富裕空间
+                flex-shrink
+                flex-grow : 伸展因子
+                flex-basis: 分配空间时,每个元素的基准值!!
+                flex      : 用来实现等分 等比例布局
+
+                富裕空间管理 是不会给项目去分配空间的;它只会控制富裕空间的位置
+                弹性空间管理 按比例将主轴的富裕空间分配到项目上
+
+                flex布局不是万能的!!! 它最大的优势在于处理等分 等比例布局
+    -->
+    <style>
+        #wrap{
+            width: 400px;
+            height: 400px;
+            border: 1px solid;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+
+            display: flex;
+        }
+        #wrap .item{
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            background: pink;
+            border: 1px solid;
+            box-sizing: border-box;
+
+            /*flex-grow:1 ;
+            flex-basis: 0%;*/
+            /*flex:1  !*等分布局的*!*/
+            /*flex-basis: 0%*/
+        }
+
+        #wrap .item:nth-child(1){
+            flex: 1;
+            /*flex-grow: 1;
+            flex-basis: 0%;*/
+        }
+        #wrap .item:nth-child(2){
+            flex: 2;
+        }
+        #wrap .item:nth-child(3){
+            flex: 3;
+        }
+        #wrap .item:nth-child(4){
+            flex: 4;
+        }
+        #wrap .item:nth-child(5){
+            flex: 5;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="item">1</div>
+        <div class="item">22</div>
+        <div class="item">3333</div>
+        <div class="item">44444</div>
+        <div class="item">555555</div>
+    </div>
+</body>
+</html>

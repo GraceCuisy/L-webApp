@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #app{
+            width: 80%;
+            height: 300px;
+            background: rgba(255, 192, 203,.5);
+
+            position: absolute;
+            left: 0;
+            top: 0;
+
+
+        }
+        a{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+
+</div>
+<a href="http://www.atguigu.com">回娘家</a>
+</body>
+<script>
+    /*
+         事件点透:
+            触屏事件在移动端没有延迟
+            鼠标事件在移动端有300ms的延迟
+                ---> 事件点透
+     */
+    window.onload=function () {
+        var app = document.querySelector("#app");
+        var aNode = document.querySelectorAll("a");
+
+        aNode.forEach(function (item) {
+            //禁止所有a标签的默认行为  让他们不能正常调转
+            item.addEventListener("click",function (ev) {
+                ev=ev||event;
+                ev.preventDefault();
+            })
+
+
+            //通过bom的接口 自己实现a标签的跳转
+            item.addEventListener("touchend",function () {
+                location.href=this.href;
+            })
+        })
+
+
+        app.addEventListener("touchstart",function () {
+            this.style.display="none";
+        })
+    }
+
+</script>
+</html>

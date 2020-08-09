@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    // bind返回返回的是一个函数 而不是 对函数进行调用
+    var write = document.write.bind(document);
+    write("123")
+
+
+
+    var obj ={
+        name:"obj",
+        fn:function(){
+            console.log(this.name)
+        }
+    }
+    init(obj.fn.bind(obj))
+
+    //框架内部的源码
+    function init(fn) {
+        fn()
+    }
+</script>
+</html>

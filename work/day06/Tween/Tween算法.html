@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app{
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="transform.js"></script>
+<script>
+    //https://www.cnblogs.com/cloudgamer/archive/2009/01/06/Tween.html
+    //https://www.cnblogs.com/bluedream2009/archive/2010/06/19/1760909.html
+
+    //Tween 算法可以让js动画也产生各式各样的运动形式
+    window.onload=function () {
+
+        /*
+        Tween 对象
+            t: 当前是哪一次,
+            b: 动画一开始的位置,
+            c: 与一开始位置之间的差值,
+            d: 动画的总次数
+            s: 回弹距离
+
+            Tween中的函数返回的都是坐标
+        */
+        var Tween ={
+            Linear: function(t,b,c,d){ return c*t/d + b; },
+            Back: function(t,b,c,d,s){
+                if (s == undefined) s = 1.70158;
+                return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+            }
+        }
+
+
+        var appNode = document.querySelector("#app");
+        var i=0;
+        var clearTimer = setInterval(()=>{
+            i++;
+            if(i>200){
+                clearInterval(clearTimer)
+            }
+            transform.css(appNode,"translateX",Tween.Back(i,0,100,200,10))
+        },1000/60)
+    }
+
+</script>
+</html>

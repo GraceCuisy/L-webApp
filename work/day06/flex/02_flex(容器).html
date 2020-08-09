@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--
+        flex两组核心概念
+            容器 项目
+            主轴 侧轴
+
+       flex一条核心规则:
+            项目默认情况下永远排列在主轴的正方向上
+
+       flex容器上的属性
+            如何控制主轴是哪一根 以及主轴的方向
+            如果控制侧轴是哪一根 以及侧轴的方向
+                flex-flow : row no-wrap
+                如何控制主轴是哪一根 以及 主轴的方向
+                    flex-direction  row row-reverse column column-reverse
+                如何控制侧轴是哪一根 以及 侧轴的方向
+                    flex-wrap no-wrap wrap
+
+
+             富余空间管理
+                主轴: justify-content
+                         flex-start 主轴的正方向
+                         flex-end   主轴的反方向
+                         center     项目整体的两边
+                         space-between 在项目之间
+                         space-around  在项目的两边
+                侧轴:align-items
+                         flex-start 侧轴的正方向
+                         flex-end   侧轴的反方向
+                         center     项目整体的两边
+                    align-content
+                         flex-start
+                         flex-end
+                         center
+                         space-between
+                         space-around
+    -->
+    <style>
+        #app{
+            width: 400px;
+            height: 200px;
+            border: 1px solid;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            align-content: center;
+        }
+        #app .item {
+            box-sizing: border-box;
+            width: 50px;
+            height: 50px;
+            border: 1px solid;
+            text-align: center;
+            line-height: 50px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+    </div>
+</body>
+</html>

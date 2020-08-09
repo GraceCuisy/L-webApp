@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #app{
+            width: 100%;
+            height: 100px;
+            background: pink;
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        #app:after{
+            content: "";
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: black;
+
+            position: absolute;
+            bottom: 0;
+        }
+
+        @media only screen and (-webkit-device-pixel-ratio: 2) {
+            #app:after{
+                transform:scaleY(.5);
+            }
+        }
+
+        @media only screen and (-webkit-device-pixel-ratio: 3) {
+            #app:after{
+                transform:scaleY(.33333333333);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+</html>

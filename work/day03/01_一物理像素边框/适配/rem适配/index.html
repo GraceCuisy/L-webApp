@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>webapp</title>
+    <style type="text/less">
+        //@rem  : 1rem 应该占据多少个位图像素
+        @rem:750/16rem;  //46.875rem
+        .bg(@url){
+            background-image: url("@{url}@2x.png");
+            @media only screen and (-webkit-device-pixel-ratio: 3){
+                background-image: url("@{url}@3x.png");
+            }
+        }
+
+        .one-px(@color){
+            position: relative;
+            &:after{
+                content: "";
+                display: block;
+                width: 100%;
+                height: 1px;
+                background: @color;
+                position: absolute;
+                bottom: 0;
+                transform: scaleY(.5);
+                @media only screen and (-webkit-device-pixel-ratio: 3){
+                    transform: scaleY(.33333333);
+                }
+            }
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            .head{
+                width: 100%;
+                height: 268/@rem;
+                .top{
+                    box-sizing: border-box;
+                    height: 212/@rem;
+                    background: gray;
+                    padding: 48/@rem 24/@rem 36/@rem 48/@rem;
+                    .avatar{
+                        float: left;
+                        /*
+                            64css像素;
+                                像素比为2的手机:128物理像素
+                                像素比为3的手机:192物理像素
+                                像素比为4的手机:256物理像素
+
+                                头像图片实际的尺寸是256*256位图像素
+                        */
+                        width: 128/@rem;
+                        height: 128/@rem;
+                        margin-right: 32/@rem;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 4/@rem;
+                        }
+                    }
+                    .info{
+                        float: left;
+                        color: rgba(255,255,255,1);
+                        margin-top: -12/@rem;
+                        .title{
+                            margin-top: 4/@rem;
+                            margin-bottom: 16/@rem;
+                            font-size: 0;
+                            .brand{
+                                display: inline-block;
+                                /*
+                                   30css像素 * 18css像素
+                                    像素比为2的手机上: 60*36的图片
+                                    像素比为3的手机上: 90*54的图片
+                               */
+                                width: 60/@rem;
+                                height: 36/@rem;
+                                vertical-align: middle;
+                                margin-top: 4/@rem;
+                                /*background-image: url(./img/brand@2x.png);*/
+                                .bg("./img/brand");
+                                background-size:100%;
+                                background-repeat:no-repeat;
+                                margin-right:12/@rem;
+                            }
+                            .name{
+                                font-size: 32/@rem;
+                                font-weight: bold;
+                                vertical-align: middle;
+                            }
+                        }
+                        .desc{
+                            font-size: 24/@rem;
+                        }
+                        .support{
+                            margin-top: 20/@rem;
+                            margin-bottom: 4/@rem;
+                            font-size: 0;
+                            .icon{
+                                display: inline-block;
+                                width: 24/@rem;
+                                height: 24/@rem;
+                                vertical-align: middle;
+                                /*background-image: url(./img/decrease_1@2x.png);*/
+                                .bg("./img/decrease_1");
+                                background-size:100%;
+                                background-repeat:no-repeat;
+                                margin-right:8/@rem;
+                            }
+                            .text{
+                                vertical-align: middle;
+                                font-size: 20/@rem;
+                            }
+                        }
+                    }
+                }
+                .bottom{
+                    height: 56/@rem;
+                    background: pink;
+                }
+            }
+            .navs{
+                .one-px(red);
+                width: 100%;
+                height: 80/@rem;
+                line-height: 80/@rem;
+                .item{
+                    width: 33.3333%;
+                    height:100%;
+                    float: left;
+                    a{
+                        font-size: 28/@rem;
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        text-align: center;
+                        text-decoration: none;
+                        color: rgba(77,85,93,1);
+                    }
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="head">
+            <div class="top">
+                <div class="avatar">
+                    <img src="./img/avatar.jpg">
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <i class="brand"></i>
+                        <span class="name">粥品香坊(大运村)</span>
+                    </div>
+                    <div class="desc">
+                        <span>蜂鸟专送/38分钟送达</span>
+                    </div>
+                    <div class="support">
+                        <i class="icon"></i>
+                        <span class="text">在线支付满28送老板</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom"></div>
+        </div>
+        <div class="navs">
+            <div class="item">
+                <a href="javascript:;">商品</a>
+            </div>
+            <div class="item">
+                <a href="javascript:;">评价</a>
+            </div>
+            <div class="item">
+                <a href="javascript:;">商家</a>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/less.js/3.11.1/less.min.js"></script>
+<script>
+    //目的: 将所有设备的布局视口 调整为16rem
+    //包括设计图 也以16rem来衡量
+    (function(){
+        var styleNode = document.createElement("style");
+        var w = document.documentElement.clientWidth/16;
+        styleNode.innerHTML = `html{font-size:${w}px!important}`;
+        document.head.appendChild(styleNode)
+    })()
+</script>
+</html>

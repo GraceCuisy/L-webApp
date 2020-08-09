@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <v-damu>
+            <template>
+                <span>span from app.template</span>
+            </template>
+        </v-damu>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    /*
+        1. 普通插槽    父向子传递html片段
+        2. 具名插槽    父向子传递html片段
+        3. 作用域插槽  父向子传递html片段 & 子向父也可以传递数据
+
+        在vue中一个Vue实例就是一个组件对象
+        插槽的本质;一种组件间html片段传递的策略(父向子传递html片段)
+        组件都是要被模板覆盖的!!! 考虑清楚当前组件会被那个模板覆盖掉即可!!!!
+
+        所有可以简写的vue指令:
+            v-bind:   --> :
+            v-on:     --> @
+            v-slot:   --> #
+    */
+
+    var damu = {
+        template:`
+            <div>
+                <slot></slot>
+            </div>
+        `
+    }
+
+    var vm = new Vue({
+        el:"#app",
+        components:{
+            "v-damu":damu
+        }
+    })
+</script>
+</html>

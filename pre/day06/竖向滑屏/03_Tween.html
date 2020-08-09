@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app{
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script src="transform.js"></script>
+<script>
+    // http://www.cnblogs.com/bluedream2009/archive/2010/06/19/1760909.html
+    // https://www.cnblogs.com/cloudgamer/archive/2009/01/06/Tween.html
+    var Tween ={
+        Linear: function(t,b,c,d){ return c*t/d + b; },
+        Back:function(t,b,c,d,s){
+            if (s == undefined) s = 1.70158;
+            return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+        }
+        /*
+            t: current time（当前时间）；
+            b: beginning value（初始值）；
+            c: change in value（变化量）；
+            d: duration（持续时间）。
+        */
+
+    }
+
+   /* console.log(Tween.Linear(1,0,100,10))
+    console.log(Tween.Linear(2,0,100,10))*/
+   var app = document.querySelector("#app");
+   var i=0;
+   var clearTime = setInterval(function () {
+        i++;
+        if(i>100){
+            clearInterval(clearTime)
+        }
+        transform.css(app,"translateX",Tween.Back(i,0,100,1000,20));
+   },1000/60)
+</script>
+</html>

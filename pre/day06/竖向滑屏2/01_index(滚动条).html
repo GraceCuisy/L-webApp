@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        html,body{width: 100%;height: 100%;overflow: hidden;}
+        #wrap{width: 100%;height: 100%;overflow: hidden;position: relative;font-size: 16px;background: pink}
+        #wrap .content{text-align: center}
+
+        #wrap .bar{
+            width: 4px;
+            height: 40px;
+            background: deeppink;
+
+            position: absolute;
+            right: 0;
+            top: 0;
+
+            opacity: 0;
+            transition: 1s opacity;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="content">
+
+        </div>
+        <div class="bar"></div>
+    </div>
+</body>
+<script src="transform.js"></script>
+<script src="sxhp2.js"></script>
+<script>
+    window.onload=function () {
+        var content = document.querySelector(".content");
+        for(var i=0;i<200;i++){
+            content.innerHTML +="nmx"+(i)+"<br>";
+        }
+
+        //滚动条
+       /*
+            滚动条的高度 / 视口的高度 = 视口的高度 / 整个内容区的高度
+            滚动条的高度 = (视口的高度 / 整个内容区的高度)   *视口的高度
+        */
+        var scrollBar = document.querySelector("#wrap .bar");
+        var scale = 0;
+        setTimeout(function () {
+            scale = document.documentElement.clientHeight / content.offsetHeight;
+            scrollBar.style.height = scale * document.documentElement.clientHeight +"px";
+        },200)
+
+        //滚动条的逻辑
+        var callBack ={
+            start:function () {
+                scrollBar.style.opacity = 1;
+            },
+            move:function () {
+                // 滚动条位移的实时距离 / 滚动条位移的最大距离 = 内容区位移的实时距离 / 内容区位移的最大距离
+                // 滚动条位移的实时距离 = (内容区位移的实时距离 / 内容区位移的最大距离) * 滚动条位移的最大距离
+                var scale = transform.css(this,"translateY") / (this.offsetHeight - document.documentElement.clientHeight);
+                var translateY = scale * (document.documentElement.clientHeight - scrollBar.offsetHeight);
+                transform.css(scrollBar,"translateY",-translateY);
+            },
+            end:function(){},
+            over:function () {
+                scrollBar.style.opacity = 0;
+            }
+        }
+        sxhp.move(callBack);
+
+    }
+</script>
+</html>
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>webapp</title>
+    <style type="text/less">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #app{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            width: 200px;
+            height: 200px;
+            background: pink;
+            text-align: center;
+            line-height: 200px;
+
+            position: absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="wrap">
+            wrap
+        </div>
+        <div id="inner">
+            inner
+        </div>
+    </div>
+</body>
+<script>
+    var app = document.querySelector("#app");
+    var inner = document.querySelector("#inner");
+    app.addEventListener("touchstart",(ev)=>{
+        ev = ev || event;
+        console.log(ev.cancelable)
+        ev.preventDefault() //这一行代码在chrome的模拟器中是没有作用的!! 在真机上也不可以的!
+    })
+    inner.addEventListener("touchstart",(ev)=>{
+        ev = ev || event;
+        ev.stopPropagation();
+    })
+
+</script>
+<script src="https://cdn.bootcdn.net/ajax/libs/less.js/3.11.1/less.min.js"></script>
+</html>

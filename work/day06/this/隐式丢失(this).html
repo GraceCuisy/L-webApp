@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    //隐式丢失  使用隐式绑定的形式进行赋值 & 传参
+
+
+
+    // 浏览器的内部write方法中的this指向的是document
+    // document.write("123")
+
+    //报错的  this:window
+    var write = document.write;
+    // write("123")
+
+
+
+    var obj ={
+        name:"obj",
+        fn:function(){
+            console.log(this.name)
+        }
+    }
+    // obj.fn()
+    init(obj.fn)
+    function init(fn) {
+        fn()
+    }
+</script>
+</html>

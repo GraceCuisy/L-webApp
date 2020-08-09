@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <v-damu>
+            <template slot-scope="{a,b}" slot="top">
+                <span>span from app.template-1;{{a}};{{b}}</span>
+            </template>
+            <template slot-scope="{c,d}" slot="bottom">
+                <span>span from app.template-2;{{c}};{{d}}</span>
+            </template>
+        </v-damu>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    var damu = {
+        template:`
+            <div>
+                <slot a="a" b="b" name="top"></slot>
+                <slot c="c" d="d" name="bottom"></slot>
+            </div>
+        `
+    }
+
+    var vm = new Vue({
+        el:"#app",
+        components:{
+            "v-damu":damu
+        }
+    })
+</script>
+</html>

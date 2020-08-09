@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>Title</title>
+    <style type="text/less">
+        @rem:750/16rem;
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-size: 0;
+            color: rgba(255,255,255,1);
+        }
+
+        #wrap > header{
+            width: 100%;
+            height: 212/@rem;
+            background: rgba(7,17,27,0.5);
+            overflow: hidden;
+        }
+        #wrap > header >.head-top{
+            overflow: hidden;
+            margin: 48/@rem 0 0 48/@rem;
+        }
+        #wrap > header >.head-top .logo{
+            width: 128/@rem;
+            height: 128/@rem;
+            margin-right: 32/@rem;
+            float: left;
+        }
+        #wrap > header >.head-top .logo img{
+            width: 100%;
+            height: 100%;
+        }
+
+        #wrap > header >.head-top .meta{
+            float: left;
+        }
+
+        #wrap > header >.head-top .meta .title{
+            margin: 4/@rem 0 16/@rem 0;
+        }
+        #wrap > header >.head-top .meta .title .brand{
+            display: inline-block;
+            width: 60/@rem;
+            height: 36/@rem;
+            background: url("./img/brand@2x.png") no-repeat;
+            background-size: 100% 100%;
+            margin-right: 12/@rem;
+            vertical-align: middle;
+        }
+        #wrap > header >.head-top .meta .title .text{
+            font-size: 32/@rem;
+            line-height: 36/@rem;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        #wrap > header >.head-top .meta .info span{
+            font-size: 24/@rem;
+            line-height: 24/@rem;
+            font-weight: 200;
+        }
+
+        #wrap > header >.head-top .meta .supportInfo{
+            margin: 20/@rem 0 4/@rem 0;
+        }
+        #wrap > header >.head-top .meta .supportInfo .icon{
+            display: inline-block;
+            width: 24/@rem;
+            height: 24/@rem;
+            background: url("./img/decrease_1@2x.png") no-repeat;
+            background-size: 100% 100%;
+            vertical-align: middle;
+            margin-right: 8/@rem;
+        }
+        #wrap > header >.head-top .meta .supportInfo .support{
+            font-size: 20/@rem;
+            line-height: 24/@rem;
+            font-weight: 200;
+            vertical-align: middle;
+        }
+
+
+    </style>
+</head>
+<body>
+    <section id="wrap">
+        <header>
+            <section class="head-top">
+                <div class="logo">
+                    <img src="./img/avatar.jpg" alt="">
+                </div>
+                <div class="meta">
+                    <div class="title">
+                        <span class="brand"></span>
+                        <span class="text">一休哥(西部硅谷)</span>
+                    </div>
+                    <div class="info">
+                        <span>蜂鸟专送/38分钟到达</span>
+                    </div>
+                    <div class="supportInfo">
+                        <span class="icon"></span>
+                        <span class="support">在线支付 满28减5,满50送店</span>
+                    </div>
+                </div>
+            </section>
+        </header>
+    </section>
+</body>
+<script src="https://cdn.bootcss.com/less.js/1.7.5/less.min.js"></script>
+<script>
+        /*
+            什么是rem适配?
+                  将设计图按比例塞到不同的设备中
+                    优点 : 没有破坏完美视口
+                    缺点 : px -> rem得人转化有点复杂 (配合预处理器一起使用)
+                    原理 : 改变一个元素在不同设备上占据的css像素的个数 最终形成等比
+         */
+
+
+    (function () {
+        var styleNode = document.createElement("style");
+        var w = document.documentElement.clientWidth/16;
+        styleNode.innerHTML = "html{font-size:"+w+"px!important}";
+        document.head.appendChild(styleNode);
+    })()
+</script>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>Title</title>
+    <style type="text/less">
+        .bg(@url){
+            background-image: url("@{url}@2x.png");
+            @media only screen and (-webkit-device-pixel-ratio: 3){
+                background-image: url("@{url}@3x.png");
+            }
+        }
+
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #wrap{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-size: 0px;
+            color: rgba(255,255,255,1);
+            & >header{
+                width: 100%;
+                height: 106px;
+                background: rgba(7,17,27,0.5);
+                overflow: hidden;
+                & >.head-top{
+                    overflow: hidden;
+                    margin: 24px 0 0 24px;
+                    .logo{
+                        width: 64px;
+                        height: 64px;
+                        margin-right: 16px;
+                        float: left;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                    .meta{
+                        float: left;
+                        .title{
+                            margin: 2px 0 8px 0;
+                            .brand{
+                                .bg("./img/brand");
+                                //background: url("./img/brand@2x.png") no-repeat;
+                                display: inline-block;
+                                width: 30px;
+                                height: 18px;
+                                background-size: 100% 100%;
+                                background-repeat:no-repeat ;
+                                margin-right: 6px;
+                                vertical-align: middle;
+                            }
+                            .text{
+                                font-size: 16px;
+                                line-height: 18px;
+                                font-weight: bold;
+                                vertical-align: middle;
+                            }
+                        }
+                        .info{
+                            span{
+                                font-size: 12px;
+                                line-height: 12px;
+                                font-weight: 200;
+                            }
+                        }
+                        .supportInfo{
+                            margin: 10px 0 2px 0;
+                            .icon{
+                                display: inline-block;
+                                width: 12px;
+                                height: 12px;
+                                background: url("./img/decrease_1@2x.png") no-repeat;
+                                background-size: 100% 100%;
+                                vertical-align: middle;
+                                margin-right: 4px;
+                            }
+                            .support{
+                                font-size: 10px;
+                                line-height: 12px;
+                                font-weight: 200;
+                                vertical-align: middle;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="wrap">
+        <header>
+            <section class="head-top">
+                <div class="logo">
+                    <img src="./img/avatar.jpg" alt="">
+                </div>
+                <div class="meta">
+                    <div class="title">
+                        <span class="brand"></span>
+                        <span class="text">一休哥(西部硅谷)</span>
+                    </div>
+                    <div class="info">
+                        <span>蜂鸟专送/38分钟到达</span>
+                    </div>
+                    <div class="supportInfo">
+                        <span class="icon"></span>
+                        <span class="support">在线支付 满28减5,满50送店</span>
+                    </div>
+                </div>
+            </section>
+        </header>
+    </section>
+</body>
+<script src="https://cdn.bootcss.com/less.js/1.7.5/less.min.js"></script>
+</html>

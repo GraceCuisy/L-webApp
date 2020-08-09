@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--
+        flex两组核心概念
+            容器 项目
+            主轴 侧轴
+
+       flex一条核心规则:
+            项目默认情况下永远排列在主轴的正方向上
+
+       flex项目上的属性
+            弹性空间管理(将主轴的富裕空间按比例分配给项目)
+                flex-grow
+                flex-basis
+                flex
+    -->
+    <style>
+        #app{
+            width: 400px;
+            height: 200px;
+            border: 1px solid;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: flex-start;
+            align-items: flex-start;
+            align-content: flex-end;
+        }
+        #app .item {
+            box-sizing: border-box;
+            /*width: 50px;*/
+            height: 50px;
+            border: 1px solid;
+            text-align: center;
+            line-height: 50px;
+            background: pink;
+
+            /*在分配空间前 将所有的项目基准值都调为0*/
+            flex-basis:0%;
+            /*只是负责给每一个项目分配一样的空间 如果flex-grow的值相等的话*/
+            /*flex-grow: 1;  !*只要每一个item的flex-grow保持一致 就能实现等分布局? 不是*!*/
+        }
+        #app .item:nth-child(1){order: 0;flex-grow:1}
+        #app .item:nth-child(2){order: 0;flex-grow:2}
+        #app .item:nth-child(3){order: 0;flex-grow:3}
+        #app .item:nth-child(4){order: 0;flex-grow:4}
+        #app .item:nth-child(5){order: 0;flex-grow:5}
+        #app .item:nth-child(6){order: 0;flex-grow:6}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="item">a</div>
+        <div class="item">b</div>
+        <div class="item">c</div>
+        <div class="item">d</div>
+        <div class="item">e</div>
+        <div class="item">h</div>
+    </div>
+</body>
+</html>

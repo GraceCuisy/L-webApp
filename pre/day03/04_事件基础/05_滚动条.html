@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        #app{
+            width: 80%;
+            height: 300px;
+            background: pink;
+            font-size: 30px;
+            text-align: center;
+            overflow: auto;
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="app">
+            xxxxxxxxx <br>
+            xxxxxxxxx <br>
+            xxxxxxxxx <br>
+            xxxxxxxxx <br>
+            xxxxxxxxx <br>
+            xxxxxxxxx <br>
+            xxxxxxxxx <br>
+            xxxxxxxxx <br>
+            xxxxxxxxx <br>
+            xxxxxxxxx <br>
+            xxxxxxxxx <br>
+            xxxxxxxxx <br>
+            xxxxxxxxx <br>
+            xxxxxxxxx <br>
+            xxxxxxxxx <br>
+        </div>
+    </div>
+</body>
+<script>
+    var wrap = document.querySelector("#wrap");
+    var app = document.querySelector("#app");
+
+    // 全局禁止默认行为
+    // 全局的滚动条都会消失  ---> 一般我们都自己定义系统滚动条
+    document.addEventListener("touchstart",function(ev){
+        ev=ev||event;
+        ev.preventDefault();
+    })
+</script>
+</html>

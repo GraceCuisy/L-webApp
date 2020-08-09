@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <style>
+        *{margin: 0;padding: 0;}
+        html,body{width: 100%;height: 100%;overflow: hidden;}
+        #wrap{width: 100%;height: 100%;overflow: hidden;}
+        li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .nav{
+            box-sizing: border-box;
+            height: 50px;
+            padding: 10px 0 3px 0;
+            background: #EEEEEE;
+        }
+        .nav > .list{
+            overflow: hidden;
+            padding: 0;
+            float: left;
+            white-space: nowrap;
+        }
+        .nav > .list > li{
+            display: inline-block;
+            height: 30px;
+            line-height:30px ;
+            padding: 0 10px;
+        }
+        .nav > .list > li > a{
+            font-size: 22px;
+            color: #020202;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="nav">
+            <ul class="list">
+
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="./js/transform.js"></script>
+<script src="./js/nav.js"></script>
+<script>
+    window.onload=function () {
+        var wrap = document.querySelector("#wrap");
+        var arr = ["首页","MV","约旦","V榜","音乐","商城","节目"
+            ,"饭团","咨询","我的家","App下载","热门应用","张大脸","晓飞张"
+            ,"冬雨老婆","睡神1号","睡神2号"]
+        nav.init(wrap,arr); //移动端基础框架的搭建
+    }
+</script>
+</html>

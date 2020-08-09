@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        #app{
+            width: 80%;
+            height: 300px;
+            background: pink;
+            font-size: 30px;
+            line-height: 300px;
+            text-align: center;
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="app">
+            xxxxxxxxx
+        </div>
+    </div>
+</body>
+<script>
+    var wrap = document.querySelector("#wrap");
+    var app = document.querySelector("#app");
+    wrap.addEventListener("touchstart",function(ev){
+        ev=ev||event;
+        app.innerHTML = ev.cancelable;
+        ev.preventDefault();
+    })
+</script>
+</html>

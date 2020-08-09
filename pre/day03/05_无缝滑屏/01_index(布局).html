@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            font-size: 24px;
+        }
+        #wrap .course-wrap{
+            width: 100%;
+        }
+        #wrap .course-wrap > .list{
+            width: 500%;
+            list-style: none;
+            overflow: hidden;
+        }
+        #wrap .course-wrap > .list > li{
+            width: 20%;
+            float: left;
+        }
+        #wrap .course-wrap > .list > li img{
+            display: block;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="course-wrap">
+            <ul class="list">
+                <li>
+                    <img src="./img/1.jpg" alt="">
+                </li>
+                <li>
+                    <img src="./img/2.jpg" alt="">
+                </li>
+                <li>
+                    <img src="./img/3.jpg" alt="">
+                </li>
+                <li>
+                    <img src="./img/4.jpg" alt="">
+                </li>
+                <li>
+                    <img src="./img/5.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    window.onload=function () {
+        //1. 加meta标签
+        //2. 禁止全局的默认行为
+        var wrapNode = document.querySelector("#wrap");
+
+        wrapNode.addEventListener("touchstart",function (ev) {
+            ev = ev||event;
+            ev.preventDefault();
+        })
+        //3.rem适配
+        ;(function () {
+            var styleNode = document.createElement("style");
+            var w = document.documentElement.clientWidth/16;
+            styleNode.innerHTML="html{font-size:"+w+"px!important}"
+            document.head.appendChild(styleNode);
+        })()
+    }
+</script>
+</html>

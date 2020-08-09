@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #test{
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+
+            opacity: 1;
+            background: pink;
+        }
+
+        .damu-enter{opacity: 0 !important;background: gray !important;}
+        .damu-enter-active{transition: 1s all}
+        .damu-enter-to{opacity: 1 !important;background: pink !important;}
+
+        .damu-leave{}
+        .damu-leave-active{transition: 1s all}
+        .damu-leave-to{opacity: 0 !important;background: gray !important;}
+       /*
+            当元素从显示状态 --> 隐藏状态   我们称为leave状态 vue会给目标元素加上3个class
+                v-leave: 当前这个class vue本身是没有使用的!
+                v-leave-active : 他在整个vue过渡的生命周期中都会有效
+                v-leave-to     : 他只有在vue过渡动画的最后一帧才会起作用
+
+            当元素从隐藏状态--> 显示状态   我们称为enter状态 vue会给目标元素加上3个class
+                v-enter: 当前这个class会在vue过渡动画的第一帧起作用
+                v-enter-active : 他在整个vue过渡的生命周期中都会有效
+                v-enter-to     : 他只有在vue过渡动画的最后一帧才会起作用
+        */
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="flag = !flag">click me</button>
+        <transition name="damu">
+            <div id="test" v-show="flag">
+                {{msg}}
+            </div>
+        </transition>
+
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+
+    //https://github.com/betterDamu/bj_191021/tree/master/课件/vue
+    /*
+        在vue中如何使用过渡动画:
+            Vue 在插入、更新或者移除 DOM 时，提供多种不同方式的应用过渡效果。
+                vue过渡动画会和 v-show , v-if 相结合使用
+            必须使用 transition 组件将需要过渡动画的元素 包裹起来
+    */
+
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"hello vue",
+            flag:true
+        }
+    })
+</script>
+</html>
